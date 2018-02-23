@@ -29,10 +29,11 @@ def find_lib_path():
     lib_path : list(string)
         List of all found path to the libraries.
     """
+    working_path = os.getcwd()
     curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
     api_path = os.path.join(curr_path, '../../lib/')
     cmake_build_path = os.path.join(curr_path, '../../build/')
-    dll_path = [curr_path, api_path, cmake_build_path]
+    dll_path = [working_path, curr_path, api_path, cmake_build_path]
     if os.name == 'nt':
         dll_path.append(os.path.join(curr_path, '../../build'))
         vs_configuration = 'Release'
